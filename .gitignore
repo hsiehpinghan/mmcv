@@ -109,7 +109,7 @@ venv.bak/
 
 # editors and IDEs
 .idea/
-.vscode/
+#.vscode/
 
 # custom
 .DS_Store
