@@ -1,0 +1,22 @@
+# # create miniconda virtual machine (linux)
+cd /tmp
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+sh Miniconda3-latest-Linux-x86_64.sh -b
+/home/hsiehpinghan/miniconda3/bin/conda create --name mmcv python=3.7
+export MINICONDA_HOME=/home/hsiehpinghan/miniconda3
+export PATH=$MINICONDA_HOME/bin:$PATH
+conda init bash
+conda activate mmcv
+conda install -c anaconda pytest
+conda install -c pytorch pytorch torchvision cpuonly
+pip install -r requirements.txt
+download libjpeg-turbo and install from https://sourceforge.net/projects/libjpeg-turbo/files/2.1.2/libjpeg-turbo-official_2.1.2_amd64.deb/download
+cd /home/hsiehpinghan/git/mmcv
+MMCV_WITH_OPS=1 pip install -e .
+
+# start miniconda jupyter notebook (linux)
+export ANACONDA_HOME=/home/hsiehpinghan/anaconda3
+export PATH=$ANACONDA_HOME/bin:$PATH
+cd /home/hsiehpinghan/git/mmcv/notebook
+conda activate mmcv
+jupyter notebook
